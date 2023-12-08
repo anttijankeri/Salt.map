@@ -5,16 +5,52 @@
   --color-4: #005247;
 }
 
+* {
+  color: var(--color-4);
+}
+
+.container {
+  width: 80%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-inline: auto;
+}
+
 .google-map {
+  width: 80vw;
+  height: 80vh;
+}
+
+@media (width >= 1000px) {
+  .google-map {
+    width: 800px;
+  }
 }
 
 .map-marker {
+  width: 0;
+  height: 0;
+  border-left: 2rem solid transparent;
+  border-right: 2rem solid transparent;
+  border-top: 5rem solid red;
+  transform: translate(-2rem, -5rem);
 }
 
 .flex {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.flex > * {
+  margin: auto;
 }
 
 .header {
+  font-size: 4rem;
+  text-align: center;
 }
 
 .button {
@@ -39,4 +75,6 @@
 }
 
 .person-list {
+  display: flex;
+  flex-direction: column;
 }
