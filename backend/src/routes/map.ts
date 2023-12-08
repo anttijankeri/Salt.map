@@ -1,6 +1,6 @@
 import express from "express";
 import client from "../prisma";
-import { validatePin, validatePinPartial } from "../validate";
+import { validatePost, validateUpdate } from "../validate";
 
 const router = express.Router();
 
@@ -29,38 +29,39 @@ router.post("/", async (req, res, next) => {
   try {
     const body = req.body;
 
-    const validate = validatePin(body);
+    const validate = validatePost(body);
     if (!validate.success) {
-      return res.status(400).send("Faulty data");
+      return res.status(400).send(validate.error.issues);
     }
 
     const user = await client.user.findUnique({
       where: { hash: body.userHash },
     });
 
-    if (!user) {
-      return res.status(400).send("User not found");
+    if (user) {
+      return res.status(400).send("User already exists");
     }
 
     const newPin = {
       latitude: body.lat,
       longitude: body.lng,
-      userId: user.id,
     };
 
-    await client.coordinates.create({ data: newPin });
-    res.json(newPin);
+    await client.user.create({
+      data: { name: body.name, hash: body.userHash, pin: { create: newPin } },
+    });
+    res.json({ ...newPin, name: body.name, hash: body.hash });
   } catch (error) {
     next(error);
   }
 });
 
-router.patch("/:id", async (req, res, next) => {
+router.put("/:id", async (req, res, next) => {
   try {
     const body = req.body;
     const id = req.params.id;
 
-    const validate = validatePinPartial(body);
+    const validate = validateUpdate(body);
     if (!validate.success) {
       return res.status(400).send("Faulty data");
     }
@@ -72,8 +73,6 @@ router.patch("/:id", async (req, res, next) => {
     if (!user) {
       return res.status(400).send("User not found");
     }
-
-    delete body.userHash;
 
     await client.coordinates.update({
       where: { id: user.id },

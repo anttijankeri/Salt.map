@@ -1,30 +1,23 @@
 import z from "zod";
 
-export const pinSchema = z.object({
-  userHash: z.string(),
-  lat: z.number().int(),
+export const updateSchema = z.object({
   lng: z.number().int(),
+  lat: z.number().int(),
 });
 
-export const pinSchemaPartial = pinSchema.partial();
-
-export const userSchema = z.object({
+export const postSchema = updateSchema.extend({
   userHash: z.string(),
   name: z.string(),
 });
 
-export type PinObject = z.infer<typeof pinSchema>;
+export type PostObject = z.infer<typeof postSchema>;
 
-export type userObject = z.infer<typeof userSchema>;
+export type UpdateObject = z.infer<typeof updateSchema>;
 
-export const validatePin = (pin: PinObject) => {
-  return pinSchema.safeParse(pin);
+export const validatePost = (post: PostObject) => {
+  return postSchema.safeParse(post);
 };
 
-export const validatePinPartial = (pin: PinObject) => {
-  return pinSchemaPartial.safeParse(pin);
-};
-
-export const validateUSer = (user: userObject) => {
-  return userSchema.safeParse(user);
+export const validateUpdate = (update: UpdateObject) => {
+  return updateSchema.safeParse(update);
 };
