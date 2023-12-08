@@ -1,4 +1,4 @@
-import GoogleMap from "../components/GoogleMap";
+import GoogleMap from "../components/GoogleMapInteractive";
 import HeaderDiv from "../components/HeaderDiv";
 
 const SingleMap = () => {

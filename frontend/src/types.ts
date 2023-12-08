@@ -17,3 +17,9 @@ export interface HeaderDivProps {
   header: string;
   link: string;
 }
+
+export interface MapMarkerProps {
+  lat: number;
+  lng: number;
+  text: string;
+}
