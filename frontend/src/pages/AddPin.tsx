@@ -40,11 +40,14 @@ const AddPin = () => {
     };
 
     try {
-      const data = await fetch("saltmap-production.up.railway.app/api/maps", {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const data = await fetch(
+        "https://saltmap-production.up.railway.app/api/maps",
+        {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (!data.ok) {
         throw new Error(data.statusText);

@@ -33,7 +33,7 @@ const BrowsePins = () => {
   };
 
   useEffect(() => {
-    fetch("saltmap-production.up.railway.app/api/users")
+    fetch("https://saltmap-production.up.railway.app/api/users")
       .then((data) => data.json())
       .then((data) => {
         updateState!({ ...state, people: data });

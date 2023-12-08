@@ -10,7 +10,7 @@ const AllMap = () => {
   const { state, updateState } = useContext(AppContext);
 
   useEffect(() => {
-    fetch("saltmap-production.up.railway.app/api/maps")
+    fetch("https://saltmap-production.up.railway.app/api/maps")
       .then((data) => data.json())
       .then((data) => {
         updateState!({ ...state, markers: decodeMarkers(data) });
