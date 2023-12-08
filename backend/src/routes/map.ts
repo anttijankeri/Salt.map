@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const data = await client.coordinates.findMany({
+    const data = await client.coordinates.findFirst({
       where: { user: { hash: req.params.id } },
       include: { user: true },
     });
