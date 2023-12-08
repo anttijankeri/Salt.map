@@ -3,6 +3,7 @@ import z from "zod";
 export const updateSchema = z.object({
   lng: z.number().int(),
   lat: z.number().int(),
+  color: z.string(),
 });
 
 export const postSchema = updateSchema.extend({

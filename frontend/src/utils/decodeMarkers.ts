@@ -9,6 +9,7 @@ const decodeMarkers = (markers: MarkerData[]) => {
       lat: marker.latitude / 100000,
       lng: marker.longitude / 100000,
       name: marker.user.name,
+      color: marker.color,
     } as NamedMarker;
   });
 };

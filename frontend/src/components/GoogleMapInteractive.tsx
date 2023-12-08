@@ -17,10 +17,8 @@ const GoogleMap = () => {
     zoom: 4,
   };
 
-  const defaultColor = getRandomColor();
-
   const handleMapClick = ({ lat, lng }: { lat: number; lng: number }) => {
-    const newMarker = { lat, lng };
+    const newMarker = { lat, lng, color: getRandomColor() };
     updateState!({ ...state, placedMarker: newMarker });
   };
 
@@ -37,7 +35,7 @@ const GoogleMap = () => {
             lat={state.placedMarker.lat}
             lng={state.placedMarker.lng}
             text="My Marker"
-            color={defaultColor}
+            color={state.placedMarker.color}
           />
         )}
       </GoogleMapReact>

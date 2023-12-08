@@ -34,4 +34,13 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
+router.delete("/", async (req, res, next) => {
+  try {
+    const attempt = await client.user.deleteMany({});
+    res.json(attempt);
+  } catch (error) {
+    next(error);
+  }
+});
+
 export default router;

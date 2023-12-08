@@ -56,7 +56,7 @@ export interface AppState {
   markers: NamedMarker[];
   people: Person[];
   nameInput: string;
-  placedMarker: Coordinates | undefined;
+  placedMarker: MapMarkerType | undefined;
 }
 
 export interface AppContextType {
@@ -67,6 +67,7 @@ export interface AppContextType {
 export interface MarkerData {
   latitude: number;
   longitude: number;
+  color: string;
   user: {
     name: string;
     hash: string;

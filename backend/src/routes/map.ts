@@ -45,6 +45,7 @@ router.post("/", async (req, res, next) => {
     const newPin = {
       latitude: body.lat,
       longitude: body.lng,
+      color: body.color,
     };
 
     await client.user.create({

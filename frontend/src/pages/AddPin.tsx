@@ -36,6 +36,7 @@ const AddPin = () => {
       userHash: hash,
       lng: Math.round(state.placedMarker.lng * 100000),
       lat: Math.round(state.placedMarker.lat * 100000),
+      color: state.placedMarker.color,
     };
 
     try {
