@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "anttijankeri.github.io/Salt.map",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
