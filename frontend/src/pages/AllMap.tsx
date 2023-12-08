@@ -7,7 +7,7 @@ const AllMap = () => {
   const { state, setState } = useContext(AppContext);
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api")
+    fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api/maps")
       .then((data) => data.json())
       .then((data) => {
         setState!({ ...state, markers: data.body });

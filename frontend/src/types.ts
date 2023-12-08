@@ -4,7 +4,11 @@ export interface InputButtonProps {
   text: string;
 }
 
-export interface InputButtonIconProps {
+export interface PersonButtonProps extends InputButtonProps {
+  id: string;
+}
+
+export interface IconButtonProps {
   icon: string;
   alt: string;
 }
@@ -40,9 +44,15 @@ export interface IMapProps {
 
 export interface MapPageProps extends IMapProps {}
 
+export interface Person {
+  name: string;
+  hash: string;
+}
+
 export interface AppState {
   selectedPerson: string;
   markers: NamedMarker[];
+  people: Person[];
 }
 
 export interface AppContextType {

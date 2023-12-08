@@ -8,7 +8,9 @@ const SingleMap = () => {
 
   useEffect(() => {
     fetch(
-      import.meta.env.VITE_REACT_APP_BACKEND + "/api/" + state.selectedPerson
+      import.meta.env.VITE_REACT_APP_BACKEND +
+        "/api/maps" +
+        state.selectedPerson
     )
       .then((data) => data.json())
       .then((data) => {

@@ -4,6 +4,15 @@ import { validateUSer } from "../validate";
 
 const router = express.Router();
 
+router.get("/", async (req, res, next) => {
+  try {
+    const data = await client.user.findMany();
+    res.json(data);
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get("/:id", async (req, res, next) => {
   try {
     const data = await client.user.findUnique({

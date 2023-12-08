@@ -1,5 +1,5 @@
 import { HeaderDivProps } from "../types";
-import InputButtonIcon from "./InputButtonIcon";
+import IconButton from "./IconButton";
 import { Link } from "react-router-dom";
 
 const HeaderDiv = (props: HeaderDivProps) => {
@@ -7,7 +7,7 @@ const HeaderDiv = (props: HeaderDivProps) => {
   return (
     <div>
       <Link to={link}>
-        <InputButtonIcon icon="" alt="Go Back" />
+        <IconButton icon="" alt="Go Back" />
       </Link>
       <h1>{header}</h1>
     </div>
