@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -10,15 +9,6 @@ import AllMap from "./pages/AllMap";
 import "./App.css";
 
 const App = () => {
-  const connect = async () => {
-    const response = await fetch("http://localhost:3000/users");
-    console.log(response.json());
-  };
-
-  useEffect(() => {
-    connect();
-  }, []);
-
   return (
     <main className="container">
       <Routes>
