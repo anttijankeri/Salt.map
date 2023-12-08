@@ -1,8 +1,10 @@
 import { IconButtonProps } from "../types";
+import { Link } from "react-router-dom";
 
 import "../style.css";
 
 const IconButton = (props: IconButtonProps) => {
+  const { link } = props;
   const alt = props.alt || "Go Back";
   const icon =
     props.icon ||
@@ -10,7 +12,9 @@ const IconButton = (props: IconButtonProps) => {
 
   return (
     <button className="button button--small">
-      <img src={icon} alt={alt} className="img" />
+      <Link to={link}>
+        <img src={icon} alt={alt} className="img" />
+      </Link>
     </button>
   );
 };

@@ -9,6 +9,7 @@ export interface PersonButtonProps extends InputButtonProps {
 export interface IconButtonProps {
   icon?: string;
   alt?: string;
+  link: string;
 }
 
 export interface InputTextProps {

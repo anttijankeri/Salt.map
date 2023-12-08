@@ -43,7 +43,7 @@ const BrowsePins = () => {
 
   return (
     <>
-      <HeaderDiv header="Browse Pins" link="/" />
+      <HeaderDiv header="Browse" link="/" />
       <div className="person-list" onClick={selectPerson}>
         {state.people.map((person) => {
           return (

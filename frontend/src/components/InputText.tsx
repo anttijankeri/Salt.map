@@ -6,10 +6,12 @@ const InputText = (props: InputTextProps) => {
   const { name, label, placeholder } = props;
   return (
     <>
-      <label htmlFor={name} className="label">
-        {label}
-      </label>
-      <input type="text" placeholder={placeholder} className="input" />
+      <div className="block">
+        <label htmlFor={name} className="label">
+          {label}
+        </label>
+        <input type="text" placeholder={placeholder} className="input" />
+      </div>
     </>
   );
 };

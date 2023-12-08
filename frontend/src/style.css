@@ -9,18 +9,43 @@
   color: var(--color-4);
 }
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-3);
+}
+
 .container {
-  width: 80%;
+  width: 90%;
   max-width: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-inline: auto;
+  background-color: var(--color-2);
+  min-height: 100%;
+  padding: 3vh;
+  padding-bottom: 5vh;
+}
+
+.middle-container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.middle-container > :first-child {
+  margin-bottom: 2rem;
 }
 
 .google-map {
   width: 80vw;
-  height: 80vh;
+  height: 70vh;
+  border: 2px solid black;
 }
 
 @media (width >= 1000px) {
@@ -41,37 +66,100 @@
 .flex {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
+  margin-bottom: 1rem;
 }
 
 .flex > * {
   margin: auto;
 }
 
+.block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .header {
-  font-size: 4rem;
-  text-align: center;
+  font-size: 2.2rem;
+  margin-inline: 0;
+  text-wrap: nowrap;
+}
+
+@media (width >= 700px) {
+  .header {
+    font-size: 3.2rem;
+  }
+}
+
+@media (width <= 400px) {
+  .button.button--small {
+    margin-left: -1.2rem;
+  }
 }
 
 .button {
+  background-color: var(--color-3);
+  padding: 0.5rem 1rem;
+  margin: 0.4rem;
+  border: 2px solid var(--color-4);
 }
 
 .button--small {
-}
-
-.button--med {
-}
-
-.button--large {
+  margin-block: auto;
+  width: 3rem;
+  height: 3rem;
+  margin-left: 0.5rem;
+  margin-right: 0;
 }
 
 .img {
+  margin: auto;
+  scale: 1.5;
+  transform: translate(-16%, 6%);
+}
+
+.button--med {
+  width: 8rem;
+  margin-block: 1rem;
+  height: 4rem;
+}
+
+.button--large {
+  width: 14rem;
+  overflow: hidden;
+  height: 4rem;
+}
+
+@media (width >= 700px) {
+  .button--med {
+    font-size: 1.6rem;
+    width: 12rem;
+    height: 6rem;
+  }
+
+  .button--large {
+    font-size: 1.6rem;
+    width: 18rem;
+    height: 6rem;
+  }
 }
 
 .label {
+  font-size: 1.4rem;
 }
 
 .input {
+  width: 12rem;
+  height: 3rem;
+  text-align: left;
+  padding: 1rem;
+  font-size: 1rem;
+  margin-block: 1rem;
+}
+
+.input::placeholder {
+  color: #aaa;
 }
 
 .person-list {
