@@ -1,7 +1,13 @@
-import React from "react";
+import GoogleMap from "../components/GoogleMap";
+import HeaderDiv from "../components/HeaderDiv";
 
 const AllMap = () => {
-  return <div>AllMap</div>;
+  return (
+    <>
+      <HeaderDiv header="Map" link="/" />
+      <GoogleMap />
+    </>
+  );
 };
 
 export default AllMap;
