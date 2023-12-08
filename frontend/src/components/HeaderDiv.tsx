@@ -7,7 +7,7 @@ const HeaderDiv = (props: HeaderDivProps) => {
   return (
     <div>
       <Link to={link}>
-        <IconButton icon="" alt="Go Back" />
+        <IconButton />
       </Link>
       <h1>{header}</h1>
     </div>

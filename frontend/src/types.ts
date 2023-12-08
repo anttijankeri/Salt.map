@@ -9,8 +9,8 @@ export interface PersonButtonProps extends InputButtonProps {
 }
 
 export interface IconButtonProps {
-  icon: string;
-  alt: string;
+  icon?: string;
+  alt?: string;
 }
 
 export interface InputTextProps {
@@ -24,9 +24,12 @@ export interface HeaderDivProps {
   link: string;
 }
 
-export interface MapMarkerType {
+export interface Coordinates {
   lat: number;
   lng: number;
+}
+
+export interface MapMarkerType extends Coordinates {
   color: string;
 }
 
@@ -53,6 +56,8 @@ export interface AppState {
   selectedPerson: string;
   markers: NamedMarker[];
   people: Person[];
+  nameInput: string;
+  placedMarker: Coordinates | undefined;
 }
 
 export interface AppContextType {

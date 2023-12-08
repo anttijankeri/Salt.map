@@ -1,10 +1,10 @@
 import GoogleMapReact from "google-map-react";
 import MapMarker from "./MapMarker";
-import { useState } from "react";
-import { MapMarkerType } from "../types";
+import { useContext } from "react";
+import AppContext from "../Context/Context";
 
 const GoogleMap = () => {
-  const [marker, setMarker] = useState<MapMarkerType>();
+  const { state, setState } = useContext(AppContext);
 
   const defaultProps = {
     center: {
@@ -17,8 +17,8 @@ const GoogleMap = () => {
   const defaultColor = "#ff3333";
 
   const handleMapClick = ({ lat, lng }: { lat: number; lng: number }) => {
-    const newMarker = { lat, lng, color: defaultColor };
-    setMarker(newMarker);
+    const newMarker = { lat, lng };
+    setState!({ ...state, placedMarker: newMarker });
   };
 
   return (
@@ -29,12 +29,12 @@ const GoogleMap = () => {
         defaultZoom={defaultProps.zoom}
         onClick={handleMapClick}
       >
-        {marker && (
+        {state.placedMarker && (
           <MapMarker
-            lat={marker.lat}
-            lng={marker.lng}
+            lat={state.placedMarker.lat}
+            lng={state.placedMarker.lng}
             text="My Marker"
-            color={marker.color}
+            color={defaultColor}
           />
         )}
       </GoogleMapReact>
