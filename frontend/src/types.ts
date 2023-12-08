@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from "react";
-
 export interface InputButtonProps {
   text: string;
 }
@@ -62,5 +60,14 @@ export interface AppState {
 
 export interface AppContextType {
   state: AppState;
-  setState: undefined | Dispatch<SetStateAction<AppState>>;
+  updateState: undefined | ((s: AppState) => void);
+}
+
+export interface MarkerData {
+  latitude: number;
+  longitude: number;
+  user: {
+    name: string;
+    hash: string;
+  };
 }

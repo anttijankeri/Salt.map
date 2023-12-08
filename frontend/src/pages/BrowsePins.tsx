@@ -1,23 +1,44 @@
 import HeaderDiv from "../components/HeaderDiv";
 import InputButton from "../components/InputButton";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PersonButton from "../components/PersonButton";
 import { useContext, useEffect } from "react";
 import AppContext from "../Context/Context";
 
 const BrowsePins = () => {
-  const { state, setState } = useContext(AppContext);
+  const { state, updateState } = useContext(AppContext);
 
-  const selectPerson = () => {};
+  const navigate = useNavigate();
+
+  const selectPerson = (event: React.MouseEvent) => {
+    event.preventDefault();
+
+    let id = (event.target as HTMLElement).id;
+
+    if (id === state.selectedPerson) {
+      id = "";
+    }
+
+    updateState!({ ...state, selectedPerson: id });
+  };
+
+  const moveToMap = () => {
+    if (!state.selectedPerson) {
+      return;
+    }
+
+    navigate("/single");
+  };
 
   useEffect(() => {
-    fetch((import.meta.env.VITE_REACT_APP_BACKEND = "/api/users"))
+    fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api/users")
       .then((data) => data.json())
       .then((data) => {
-        setState!({ ...state, people: data.body });
+        updateState!({ ...state, people: data });
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <>
       <HeaderDiv header="Browse Pins" link="/" />
@@ -32,9 +53,9 @@ const BrowsePins = () => {
           );
         })}
       </div>
-      <Link to="/single">
+      <div onClick={moveToMap}>
         <InputButton text="Done" />
-      </Link>
+      </div>
     </>
   );
 };

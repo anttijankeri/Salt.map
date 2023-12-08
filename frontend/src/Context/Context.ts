@@ -13,7 +13,7 @@ export const defaultContext = () => {
 
 const AppContext = createContext({
   state: defaultContext(),
-  setState: undefined,
+  updateState: undefined,
 } as AppContextType);
 
 export default AppContext;

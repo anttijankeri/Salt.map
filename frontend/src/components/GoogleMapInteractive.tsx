@@ -4,7 +4,7 @@ import { useContext } from "react";
 import AppContext from "../Context/Context";
 
 const GoogleMap = () => {
-  const { state, setState } = useContext(AppContext);
+  const { state, updateState } = useContext(AppContext);
 
   const defaultProps = {
     center: {
@@ -18,7 +18,7 @@ const GoogleMap = () => {
 
   const handleMapClick = ({ lat, lng }: { lat: number; lng: number }) => {
     const newMarker = { lat, lng };
-    setState!({ ...state, placedMarker: newMarker });
+    updateState!({ ...state, placedMarker: newMarker });
   };
 
   return (

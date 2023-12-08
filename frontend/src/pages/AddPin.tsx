@@ -7,12 +7,12 @@ import hashUser from "../utils/hashUser";
 import AppContext from "../Context/Context";
 
 const AddPin = () => {
-  const { state, setState } = useContext(AppContext);
+  const { state, updateState } = useContext(AppContext);
 
   const handleInput = (event: FormEvent) => {
     const value = (event.target as HTMLFormElement).value;
 
-    setState!({ ...state, nameInput: value });
+    updateState!({ ...state, nameInput: value });
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -49,7 +49,7 @@ const AddPin = () => {
 
       const body = await data.json();
 
-      setState!({ ...state, selectedPerson: body.hash });
+      updateState!({ ...state, selectedPerson: body.hash });
     } catch (error) {
       console.log(error);
     }
