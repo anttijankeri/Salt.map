@@ -34,7 +34,7 @@ const GoogleMap = () => {
           <MapMarker
             lat={state.placedMarker.lat}
             lng={state.placedMarker.lng}
-            text="My Marker"
+            text=""
             color={state.placedMarker.color}
           />
         )}

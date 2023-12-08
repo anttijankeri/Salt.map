@@ -23,24 +23,24 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
-  try {
-    const attempt = await client.user.delete({
-      where: { hash: req.params.id },
-    });
-    res.json(attempt);
-  } catch (error) {
-    next(error);
-  }
-});
+// router.delete("/:id", async (req, res, next) => {
+//   try {
+//     const attempt = await client.user.delete({
+//       where: { hash: req.params.id },
+//     });
+//     res.json(attempt);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
-router.delete("/", async (req, res, next) => {
-  try {
-    const attempt = await client.user.deleteMany({});
-    res.json(attempt);
-  } catch (error) {
-    next(error);
-  }
-});
+// router.delete("/", async (req, res, next) => {
+//   try {
+//     const attempt = await client.user.deleteMany({});
+//     res.json(attempt);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 export default router;

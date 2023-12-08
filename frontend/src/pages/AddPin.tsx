@@ -60,7 +60,7 @@ const AddPin = () => {
         nameInput: "",
       });
 
-      navigate("/single");
+      navigate("/all");
     } catch (error) {
       console.log(error);
     }

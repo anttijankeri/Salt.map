@@ -6,7 +6,7 @@ const MapMarker = (props: MapMarkerProps) => {
   const { text, color } = props;
   return (
     <div className="map-marker" style={{ borderTopColor: color }}>
-      {text}
+      <div className="map-marker__text">{text}</div>
     </div>
   );
 };
