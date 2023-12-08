@@ -1,4 +1,4 @@
-import GoogleMapInteractive from "../components/GoogleMap";
+import GoogleMapInteractive from "../components/GoogleMapInteractive";
 import HeaderDiv from "../components/HeaderDiv";
 import InputButton from "../components/InputButton";
 import InputText from "../components/InputText";

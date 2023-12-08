@@ -10,7 +10,7 @@ datasource db {
 model User {
   id   Int          @id @default(autoincrement())
   name String
-  hash String
+  hash String       @unique
   pin  Coordinates?
 }
 
