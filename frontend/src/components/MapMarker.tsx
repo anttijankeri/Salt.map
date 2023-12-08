@@ -1,9 +1,14 @@
 import { MapMarkerProps } from "../types";
-import "./MapMarker.css";
+
+import "../style.css";
 
 const MapMarker = (props: MapMarkerProps) => {
-  const { text } = props;
-  return <div className="map-marker">{text}</div>;
+  const { text, color } = props;
+  return (
+    <div className="map-marker" style={{ color }}>
+      {text}
+    </div>
+  );
 };
 
 export default MapMarker;

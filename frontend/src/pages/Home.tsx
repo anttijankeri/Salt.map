@@ -1,10 +1,12 @@
 import InputButton from "../components/InputButton";
 import { Link } from "react-router-dom";
 
+import "../style.css";
+
 const Home = () => {
   return (
     <>
-      <h1>Salt.map</h1>
+      <h1 className="header">Salt.map</h1>
       <Link to="/add">
         <InputButton text={"Add Pin"} />
       </Link>

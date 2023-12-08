@@ -2,6 +2,9 @@ import GoogleMapReact from "google-map-react";
 import MapMarker from "./MapMarker";
 import { useContext } from "react";
 import AppContext from "../Context/Context";
+import getRandomColor from "../utils/getRandomColor";
+
+import "../style.css";
 
 const GoogleMap = () => {
   const { state, updateState } = useContext(AppContext);
@@ -14,7 +17,7 @@ const GoogleMap = () => {
     zoom: 4,
   };
 
-  const defaultColor = "#ff3333";
+  const defaultColor = getRandomColor();
 
   const handleMapClick = ({ lat, lng }: { lat: number; lng: number }) => {
     const newMarker = { lat, lng };
@@ -22,7 +25,7 @@ const GoogleMap = () => {
   };
 
   return (
-    <div style={{ height: "100vh", width: "100vh" }}>
+    <div className="google-map">
       <GoogleMapReact
         bootstrapURLKeys={{ key: import.meta.env.VITE_REACT_APP_API_KEY }}
         defaultCenter={defaultProps.center}

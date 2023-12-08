@@ -2,6 +2,8 @@ import GoogleMapReact from "google-map-react";
 import MapMarker from "./MapMarker";
 import { IMapProps } from "../types";
 
+import "../style.css";
+
 const GoogleMapInteractive = (props: IMapProps) => {
   const { markers } = props;
 
@@ -14,7 +16,7 @@ const GoogleMapInteractive = (props: IMapProps) => {
   };
 
   return (
-    <div style={{ height: "100vh", width: "100vh" }}>
+    <div className="google-map">
       <GoogleMapReact
         bootstrapURLKeys={{ key: import.meta.env.VITE_REACT_APP_API_KEY }}
         defaultCenter={defaultProps.center}

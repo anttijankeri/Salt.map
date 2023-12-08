@@ -6,7 +6,7 @@ import BrowsePins from "./pages/BrowsePins";
 import SingleMap from "./pages/SingleMap";
 import AllMap from "./pages/AllMap";
 
-import "./App.css";
+import "./style.css";
 
 const App = () => {
   return (

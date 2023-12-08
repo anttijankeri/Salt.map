@@ -7,6 +7,8 @@ import hashUser from "../utils/hashUser";
 import AppContext from "../Context/Context";
 import { useNavigate } from "react-router-dom";
 
+import "../style.css";
+
 const AddPin = () => {
   const { state, updateState } = useContext(AppContext);
 
@@ -50,7 +52,12 @@ const AddPin = () => {
         throw new Error(data.statusText);
       }
 
-      updateState!({ ...state, selectedPerson: hash });
+      updateState!({
+        ...state,
+        selectedPerson: hash,
+        placedMarker: undefined,
+        nameInput: "",
+      });
 
       navigate("/single");
     } catch (error) {

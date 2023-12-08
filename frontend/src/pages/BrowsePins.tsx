@@ -5,6 +5,8 @@ import PersonButton from "../components/PersonButton";
 import { useContext, useEffect } from "react";
 import AppContext from "../Context/Context";
 
+import "../style.css";
+
 const BrowsePins = () => {
   const { state, updateState } = useContext(AppContext);
 
@@ -42,7 +44,7 @@ const BrowsePins = () => {
   return (
     <>
       <HeaderDiv header="Browse Pins" link="/" />
-      <div onClick={selectPerson}>
+      <div className="person-list" onClick={selectPerson}>
         {state.people.map((person) => {
           return (
             <PersonButton

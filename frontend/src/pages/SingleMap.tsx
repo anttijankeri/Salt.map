@@ -4,6 +4,8 @@ import HeaderDiv from "../components/HeaderDiv";
 import AppContext from "../Context/Context";
 import decodeMarkers from "../utils/decodeMarkers";
 
+import "../style.css";
+
 const SingleMap = () => {
   const { state, updateState } = useContext(AppContext);
 
