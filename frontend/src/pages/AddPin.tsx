@@ -5,9 +5,12 @@ import InputButton from "../components/InputButton";
 import InputText from "../components/InputText";
 import hashUser from "../utils/hashUser";
 import AppContext from "../Context/Context";
+import { useNavigate } from "react-router-dom";
 
 const AddPin = () => {
   const { state, updateState } = useContext(AppContext);
+
+  const navigate = useNavigate();
 
   const handleInput = (event: FormEvent) => {
     const value = (event.target as HTMLFormElement).value;
@@ -47,9 +50,9 @@ const AddPin = () => {
         throw new Error(data.statusText);
       }
 
-      const body = await data.json();
+      updateState!({ ...state, selectedPerson: hash });
 
-      updateState!({ ...state, selectedPerson: body.hash });
+      navigate("/single");
     } catch (error) {
       console.log(error);
     }
