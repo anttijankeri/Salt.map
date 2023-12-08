@@ -6,7 +6,7 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <ContextProvider>
-    <BrowserRouter>
+    <BrowserRouter basename={"/Salt.map"}>
       <App />
     </BrowserRouter>
   </ContextProvider>

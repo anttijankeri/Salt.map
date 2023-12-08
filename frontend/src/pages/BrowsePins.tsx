@@ -33,7 +33,7 @@ const BrowsePins = () => {
   };
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api/users")
+    fetch("saltmap-production.up.railway.app/api/users")
       .then((data) => data.json())
       .then((data) => {
         updateState!({ ...state, people: data });

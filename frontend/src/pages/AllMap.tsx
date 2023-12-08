@@ -10,7 +10,7 @@ const AllMap = () => {
   const { state, updateState } = useContext(AppContext);
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api/maps")
+    fetch("saltmap-production.up.railway.app/api/maps")
       .then((data) => data.json())
       .then((data) => {
         updateState!({ ...state, markers: decodeMarkers(data) });
