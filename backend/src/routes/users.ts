@@ -3,9 +3,16 @@ import client from "../prisma";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  const data = await client.user.findMany();
-  res.json(data);
+router.get("/:id", async (req, res) => {
+  res.send("get one user here");
+});
+
+router.post("/", async (req, res) => {
+  res.send("add one user here");
+});
+
+router.delete("/:id", async (req, res) => {
+  res.send("remove one user here");
 });
 
 export default router;
