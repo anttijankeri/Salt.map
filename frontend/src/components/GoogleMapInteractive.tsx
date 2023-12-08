@@ -14,8 +14,10 @@ const GoogleMap = () => {
     zoom: 4,
   };
 
+  const defaultColor = "#ff3333";
+
   const handleMapClick = ({ lat, lng }: { lat: number; lng: number }) => {
-    const newMarker = { lat, lng };
+    const newMarker = { lat, lng, color: defaultColor };
     setMarker(newMarker);
   };
 
@@ -28,7 +30,12 @@ const GoogleMap = () => {
         onClick={handleMapClick}
       >
         {marker && (
-          <MapMarker lat={marker.lat} lng={marker.lng} text="My Marker" />
+          <MapMarker
+            lat={marker.lat}
+            lng={marker.lng}
+            text="My Marker"
+            color={marker.color}
+          />
         )}
       </GoogleMapReact>
     </div>
