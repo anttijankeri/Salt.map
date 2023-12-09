@@ -96,7 +96,12 @@ const AddPin = () => {
     <>
       <HeaderDiv header="Add Pin" link="/" />
       <form onSubmit={handleSubmit} onChange={handleInput}>
-        <InputText name="person" label="Your Name" placeholder="John Doe" />
+        <InputText
+          name="person"
+          label="Your Name"
+          placeholder="John Doe"
+          value={state.nameInput}
+        />
         <GoogleMapInteractive />
         <InputButton text={state.alreadyExists ? "Update" : "Add"} />
       </form>

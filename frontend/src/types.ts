@@ -16,6 +16,7 @@ export interface InputTextProps {
   name: string;
   label: string;
   placeholder: string;
+  value: string;
 }
 
 export interface HeaderDivProps {
