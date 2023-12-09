@@ -6,7 +6,6 @@ import { useContext, useEffect } from "react";
 import AppContext from "../Context/Context";
 
 import "../style.css";
-import decodeMarkers from "../utils/decodeMarkers";
 
 const BrowsePins = () => {
   const { state, updateState } = useContext(AppContext);
@@ -22,21 +21,15 @@ const BrowsePins = () => {
       id = "";
     }
 
-    let startLat;
-    let startLng;
+    const marker = state.markers.find((marker) => {
+      return marker.hash === id;
+    });
 
-    updateState!({ selectedPerson: id, startLat, startLng });
-
-    if (id) {
-      fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api/maps/" + id)
-        .then((data) => data.json())
-        .then((data) => {
-          const markers = decodeMarkers([data]);
-          startLat = markers[0].lat;
-          startLng = markers[0].lng;
-          updateState!({ selectedPerson: id, startLat, startLng, markers });
-        });
-    }
+    updateState!({
+      selectedPerson: id,
+      startLat: marker?.lat,
+      startLng: marker?.lng,
+    });
   };
 
   const moveToMap = () => {

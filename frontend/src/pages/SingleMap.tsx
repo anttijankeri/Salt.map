@@ -2,31 +2,27 @@ import { useContext, useEffect } from "react";
 import GoogleMap from "../components/GoogleMap";
 import HeaderDiv from "../components/HeaderDiv";
 import AppContext from "../Context/Context";
-import decodeMarkers from "../utils/decodeMarkers";
 
 import "../style.css";
+import { NamedMarker } from "../types";
 
 const SingleMap = () => {
-  const { state, updateState } = useContext(AppContext);
+  const { state, makeQuery } = useContext(AppContext);
 
   useEffect(() => {
-    fetch(
-      import.meta.env.VITE_REACT_APP_BACKEND +
-        "/api/maps/" +
-        state.selectedPerson
-    )
-      .then((data) => data.json())
-      .then((data) => {
-        updateState!({ markers: decodeMarkers([data]) });
-      });
+    makeQuery!();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.selectedPerson]);
+  }, []);
 
   return (
     <>
       <HeaderDiv header="Map" link="/browse" />
       <GoogleMap
-        markers={state.markers}
+        markers={[
+          state.markers.find((marker) => {
+            return marker.hash === state.selectedPerson;
+          }) as NamedMarker,
+        ]}
         lat={state.startLat}
         lng={state.startLng}
       />

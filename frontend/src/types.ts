@@ -35,6 +35,7 @@ export interface MapMarkerType extends Coordinates {
 
 export interface NamedMarker extends MapMarkerType {
   name: string;
+  hash: string;
 }
 
 export interface MapMarkerProps extends MapMarkerType {
@@ -79,6 +80,7 @@ export interface LooseState {
 export interface AppContextType {
   state: AppState;
   updateState: undefined | ((s: LooseState) => void);
+  makeQuery: undefined | (() => void);
 }
 
 export interface MarkerData {

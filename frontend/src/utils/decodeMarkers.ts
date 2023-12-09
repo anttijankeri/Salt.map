@@ -10,6 +10,7 @@ const decodeMarkers = (markers: MarkerData[]) => {
       lng: marker.longitude,
       name: marker.user.name,
       color: marker.color,
+      hash: marker.user.hash,
     } as NamedMarker;
   });
 };

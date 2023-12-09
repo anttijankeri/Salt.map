@@ -2,19 +2,14 @@ import { useContext, useEffect } from "react";
 import GoogleMap from "../components/GoogleMap";
 import HeaderDiv from "../components/HeaderDiv";
 import AppContext from "../Context/Context";
-import decodeMarkers from "../utils/decodeMarkers";
 
 import "../style.css";
 
 const AllMap = () => {
-  const { state, updateState } = useContext(AppContext);
+  const { state, makeQuery } = useContext(AppContext);
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api/maps")
-      .then((data) => data.json())
-      .then((data) => {
-        updateState!({ markers: decodeMarkers(data) });
-      });
+    makeQuery!();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

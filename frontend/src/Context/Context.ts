@@ -17,6 +17,7 @@ export const defaultContext = () => {
 const AppContext = createContext({
   state: defaultContext(),
   updateState: undefined,
+  makeQuery: undefined,
 } as AppContextType);
 
 export default AppContext;

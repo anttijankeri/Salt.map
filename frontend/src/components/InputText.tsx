@@ -14,7 +14,7 @@ const InputText = (props: InputTextProps) => {
           type="text"
           placeholder={placeholder}
           className="input"
-          value={value}
+          defaultValue={value}
         />
       </div>
     </>
