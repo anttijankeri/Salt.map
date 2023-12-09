@@ -77,7 +77,7 @@ router.put("/:id", async (req, res, next) => {
 
     await client.coordinates.update({
       where: { id: user.id },
-      data: body,
+      data: { latitude: body.lat, longitude: body.lng, color: body.color },
     });
     res.json(body);
   } catch (error) {

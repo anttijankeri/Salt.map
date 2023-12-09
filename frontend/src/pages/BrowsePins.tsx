@@ -33,7 +33,7 @@ const BrowsePins = () => {
   };
 
   useEffect(() => {
-    fetch("https://saltmap-production.up.railway.app/api/users")
+    fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api/users")
       .then((data) => data.json())
       .then((data) => {
         updateState!({ ...state, people: data });
@@ -56,7 +56,7 @@ const BrowsePins = () => {
         })}
       </div>
       <div onClick={moveToMap}>
-        <InputButton text="Done" />
+        <InputButton text={state.selectedPerson ? "Show" : "Select"} />
       </div>
     </>
   );

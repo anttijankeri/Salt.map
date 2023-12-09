@@ -57,6 +57,7 @@ export interface AppState {
   people: Person[];
   nameInput: string;
   placedMarker: MapMarkerType | undefined;
+  alreadyExists: boolean;
 }
 
 export interface AppContextType {

@@ -11,7 +11,8 @@ const SingleMap = () => {
 
   useEffect(() => {
     fetch(
-      "https://saltmap-production.up.railway.app/api/maps/" +
+      import.meta.env.VITE_REACT_APP_BACKEND +
+        "/api/maps/" +
         state.selectedPerson
     )
       .then((data) => data.json())

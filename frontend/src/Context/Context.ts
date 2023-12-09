@@ -8,6 +8,7 @@ export const defaultContext = () => {
     people: [],
     nameInput: "",
     placedMarker: undefined,
+    alreadyExists: false,
   } as AppState;
 };
 

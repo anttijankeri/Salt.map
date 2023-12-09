@@ -17,46 +17,74 @@ const AddPin = () => {
   const handleInput = (event: FormEvent) => {
     const value = (event.target as HTMLFormElement).value;
 
-    updateState!({ ...state, nameInput: value });
+    updateState!({
+      ...state,
+      nameInput: value,
+      alreadyExists: state.people.some((person) => {
+        return person.name === value;
+      }),
+    });
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-
-    const name = state.nameInput;
-
-    if (name === "" || !state.placedMarker) {
-      return;
-    }
-
-    const hash = hashUser(name);
-
-    const payload = {
-      name,
-      userHash: hash,
-      lng: Math.round(state.placedMarker.lng * 100000),
-      lat: Math.round(state.placedMarker.lat * 100000),
-      color: state.placedMarker.color,
-    };
-
     try {
-      const data = await fetch(
-        "https://saltmap-production.up.railway.app/api/maps",
-        {
-          method: "POST",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify(payload),
-        }
-      );
+      event.preventDefault();
 
-      if (!data.ok) {
-        throw new Error(data.statusText);
+      const name = state.nameInput;
+
+      if (name === "" || !state.placedMarker) {
+        return;
+      }
+
+      const hash = hashUser(name);
+
+      if (!state.alreadyExists) {
+        const payload = {
+          name,
+          userHash: hash,
+          lng: Math.round(state.placedMarker.lng * 100000),
+          lat: Math.round(state.placedMarker.lat * 100000),
+          color: state.placedMarker.color,
+        };
+
+        const data = await fetch(
+          import.meta.env.VITE_REACT_APP_BACKEND + "/api/maps",
+          {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify(payload),
+          }
+        );
+
+        if (!data.ok) {
+          throw new Error(data.statusText);
+        }
+      } else {
+        const payload = {
+          lng: Math.round(state.placedMarker.lng * 100000),
+          lat: Math.round(state.placedMarker.lat * 100000),
+          color: state.placedMarker.color,
+        };
+
+        const data = await fetch(
+          import.meta.env.VITE_REACT_APP_BACKEND + "/api/maps/" + hash,
+          {
+            method: "PUT",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify(payload),
+          }
+        );
+
+        if (!data.ok) {
+          throw new Error(data.statusText);
+        }
       }
 
       updateState!({
         ...state,
         selectedPerson: hash,
         placedMarker: undefined,
+        alreadyExists: false,
         nameInput: "",
       });
 
@@ -72,7 +100,7 @@ const AddPin = () => {
       <form onSubmit={handleSubmit} onChange={handleInput}>
         <InputText name="person" label="Your Name" placeholder="John Doe" />
         <GoogleMapInteractive />
-        <InputButton text="Done" />
+        <InputButton text={state.alreadyExists ? "Update" : "Add"} />
       </form>
     </>
   );
