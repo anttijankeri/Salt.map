@@ -18,13 +18,11 @@ const ContextProvider: FC<PropsWithChildren> = ({ children }) => {
     fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api/maps")
       .then((data) => data.json())
       .then((data) => {
-        updateState!({ markers: decodeMarkers(data) });
-      });
-
-    fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api/users")
-      .then((data) => data.json())
-      .then((data) => {
-        updateState!({ people: data });
+        fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api/users")
+          .then((data2) => data2.json())
+          .then((data2) => {
+            updateState!({ markers: decodeMarkers(data), people: data2 });
+          });
       });
   };
 
