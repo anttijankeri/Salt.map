@@ -46,6 +46,7 @@ body {
   width: 80vw;
   height: 70vh;
   border: 2px solid black;
+  cursor: pointer;
 }
 
 @media (width >= 1000px) {
@@ -112,6 +113,7 @@ body {
   padding: 0.5rem 1rem;
   margin: 0.4rem;
   border: 2px solid var(--color-4);
+  cursor: pointer;
 }
 
 .button--small {
