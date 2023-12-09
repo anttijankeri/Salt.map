@@ -20,6 +20,12 @@ const ContextProvider: FC<PropsWithChildren> = ({ children }) => {
       .then((data) => {
         updateState!({ markers: decodeMarkers(data) });
       });
+
+    fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api/users")
+      .then((data) => data.json())
+      .then((data) => {
+        updateState!({ people: data });
+      });
   };
 
   return (

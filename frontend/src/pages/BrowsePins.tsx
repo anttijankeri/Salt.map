@@ -2,7 +2,7 @@ import HeaderDiv from "../components/HeaderDiv";
 import InputButton from "../components/InputButton";
 import { useNavigate } from "react-router-dom";
 import PersonButton from "../components/PersonButton";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import AppContext from "../Context/Context";
 
 import "../style.css";
@@ -39,15 +39,6 @@ const BrowsePins = () => {
 
     navigate("/single");
   };
-
-  useEffect(() => {
-    fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api/users")
-      .then((data) => data.json())
-      .then((data) => {
-        updateState!({ people: data });
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <>
