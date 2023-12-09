@@ -34,7 +34,7 @@ const BrowsePins = () => {
           const markers = decodeMarkers([data]);
           startLat = markers[0].lat;
           startLng = markers[0].lng;
-          updateState!({ selectedPerson: id, startLat, startLng });
+          updateState!({ selectedPerson: id, startLat, startLng, markers });
         });
     }
   };
