@@ -17,7 +17,7 @@ const SingleMap = () => {
     )
       .then((data) => data.json())
       .then((data) => {
-        updateState!({ ...state, markers: decodeMarkers([data]) });
+        updateState!({ markers: decodeMarkers([data]) });
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.selectedPerson]);
@@ -25,7 +25,11 @@ const SingleMap = () => {
   return (
     <>
       <HeaderDiv header="Map" link="/browse" />
-      <GoogleMap markers={state.markers} />
+      <GoogleMap
+        markers={state.markers}
+        lat={state.startLat}
+        lng={state.startLng}
+      />
     </>
   );
 };

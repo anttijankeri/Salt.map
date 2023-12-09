@@ -13,7 +13,7 @@ const AllMap = () => {
     fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api/maps")
       .then((data) => data.json())
       .then((data) => {
-        updateState!({ ...state, markers: decodeMarkers(data) });
+        updateState!({ markers: decodeMarkers(data) });
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

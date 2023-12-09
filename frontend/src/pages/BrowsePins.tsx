@@ -6,6 +6,7 @@ import { useContext, useEffect } from "react";
 import AppContext from "../Context/Context";
 
 import "../style.css";
+import decodeMarkers from "../utils/decodeMarkers";
 
 const BrowsePins = () => {
   const { state, updateState } = useContext(AppContext);
@@ -21,7 +22,21 @@ const BrowsePins = () => {
       id = "";
     }
 
-    updateState!({ ...state, selectedPerson: id });
+    let startLat;
+    let startLng;
+
+    updateState!({ selectedPerson: id, startLat, startLng });
+
+    if (id) {
+      fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api/maps/" + id)
+        .then((data) => data.json())
+        .then((data) => {
+          const markers = decodeMarkers([data]);
+          startLat = markers[0].lat;
+          startLng = markers[0].lng;
+          updateState!({ selectedPerson: id, startLat, startLng });
+        });
+    }
   };
 
   const moveToMap = () => {
@@ -36,7 +51,7 @@ const BrowsePins = () => {
     fetch(import.meta.env.VITE_REACT_APP_BACKEND + "/api/users")
       .then((data) => data.json())
       .then((data) => {
-        updateState!({ ...state, people: data });
+        updateState!({ people: data });
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

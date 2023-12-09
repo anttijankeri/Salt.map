@@ -18,7 +18,6 @@ const AddPin = () => {
     const value = (event.target as HTMLFormElement).value;
 
     updateState!({
-      ...state,
       nameInput: value,
       alreadyExists: state.people.some((person) => {
         return person.name === value;
@@ -81,7 +80,6 @@ const AddPin = () => {
       }
 
       updateState!({
-        ...state,
         selectedPerson: hash,
         placedMarker: undefined,
         alreadyExists: false,

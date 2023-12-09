@@ -6,7 +6,7 @@ import getRandomColor from "../utils/getRandomColor";
 
 import "../style.css";
 
-const GoogleMap = () => {
+const GoogleMapInteractive = () => {
   const { state, updateState } = useContext(AppContext);
 
   const defaultProps = {
@@ -19,7 +19,7 @@ const GoogleMap = () => {
 
   const handleMapClick = ({ lat, lng }: { lat: number; lng: number }) => {
     const newMarker = { lat, lng, color: getRandomColor() };
-    updateState!({ ...state, placedMarker: newMarker });
+    updateState!({ placedMarker: newMarker });
   };
 
   return (
@@ -43,4 +43,4 @@ const GoogleMap = () => {
   );
 };
 
-export default GoogleMap;
+export default GoogleMapInteractive;

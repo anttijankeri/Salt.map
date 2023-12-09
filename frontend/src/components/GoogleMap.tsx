@@ -4,13 +4,13 @@ import { IMapProps } from "../types";
 
 import "../style.css";
 
-const GoogleMapInteractive = (props: IMapProps) => {
+const GoogleMap = (props: IMapProps) => {
   const { markers } = props;
 
   const defaultProps = {
     center: {
-      lat: 59.3293,
-      lng: 18.0686,
+      lat: props.lat || 59.3293,
+      lng: props.lng || 18.0686,
     },
     zoom: 4,
   };
@@ -38,4 +38,4 @@ const GoogleMapInteractive = (props: IMapProps) => {
   );
 };
 
-export default GoogleMapInteractive;
+export default GoogleMap;

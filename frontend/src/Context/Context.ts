@@ -9,6 +9,8 @@ export const defaultContext = () => {
     nameInput: "",
     placedMarker: undefined,
     alreadyExists: false,
+    startLat: undefined,
+    startLng: undefined,
   } as AppState;
 };
 

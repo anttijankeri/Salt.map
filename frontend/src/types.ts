@@ -42,6 +42,8 @@ export interface MapMarkerProps extends MapMarkerType {
 
 export interface IMapProps {
   markers: NamedMarker[];
+  lat?: number;
+  lng?: number;
 }
 
 export interface MapPageProps extends IMapProps {}
@@ -58,11 +60,24 @@ export interface AppState {
   nameInput: string;
   placedMarker: MapMarkerType | undefined;
   alreadyExists: boolean;
+  startLat: number | undefined;
+  startLng: number | undefined;
+}
+
+export interface LooseState {
+  [key: string]:
+    | boolean
+    | string
+    | number
+    | Person[]
+    | NamedMarker[]
+    | undefined
+    | MapMarkerType;
 }
 
 export interface AppContextType {
   state: AppState;
-  updateState: undefined | ((s: AppState) => void);
+  updateState: undefined | ((s: LooseState) => void);
 }
 
 export interface MarkerData {
