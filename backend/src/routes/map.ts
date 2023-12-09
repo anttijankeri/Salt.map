@@ -7,6 +7,10 @@ const router = express.Router();
 router.get("/", async (req, res, next) => {
   try {
     const data = await client.coordinates.findMany({ include: { user: true } });
+    data.forEach((coordinate) => {
+      coordinate.latitude /= 100000;
+      coordinate.longitude /= 100000;
+    });
     res.json(data);
   } catch (error) {
     next(error);
@@ -19,6 +23,10 @@ router.get("/:id", async (req, res, next) => {
       where: { user: { hash: req.params.id } },
       include: { user: true },
     });
+    if (data) {
+      data.latitude /= 100000;
+      data.longitude /= 100000;
+    }
     res.json(data);
   } catch (error) {
     next(error);
@@ -43,8 +51,8 @@ router.post("/", async (req, res, next) => {
     }
 
     const newPin = {
-      latitude: body.lat,
-      longitude: body.lng,
+      latitude: Math.round(body.lat * 100000),
+      longitude: Math.round(body.lng * 100000),
       color: body.color,
     };
 
@@ -77,7 +85,11 @@ router.put("/:id", async (req, res, next) => {
 
     await client.coordinates.update({
       where: { id: user.id },
-      data: { latitude: body.lat, longitude: body.lng, color: body.color },
+      data: {
+        latitude: Math.round(body.lat * 100000),
+        longitude: Math.round(body.lng * 100000),
+        color: body.color,
+      },
     });
     res.json(body);
   } catch (error) {

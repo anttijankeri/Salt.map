@@ -42,8 +42,8 @@ const AddPin = () => {
         const payload = {
           name,
           userHash: hash,
-          lng: Math.round(state.placedMarker.lng * 100000),
-          lat: Math.round(state.placedMarker.lat * 100000),
+          lng: state.placedMarker.lng,
+          lat: state.placedMarker.lat,
           color: state.placedMarker.color,
         };
 
@@ -61,8 +61,8 @@ const AddPin = () => {
         }
       } else {
         const payload = {
-          lng: Math.round(state.placedMarker.lng * 100000),
-          lat: Math.round(state.placedMarker.lat * 100000),
+          lng: state.placedMarker.lng,
+          lat: state.placedMarker.lat,
           color: state.placedMarker.color,
         };
 

@@ -6,8 +6,8 @@ const decodeMarkers = (markers: MarkerData[]) => {
   }
   return markers.map((marker) => {
     return {
-      lat: marker.latitude / 100000,
-      lng: marker.longitude / 100000,
+      lat: marker.latitude,
+      lng: marker.longitude,
       name: marker.user.name,
       color: marker.color,
     } as NamedMarker;

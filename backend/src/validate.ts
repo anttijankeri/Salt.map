@@ -1,8 +1,8 @@
 import z from "zod";
 
 export const updateSchema = z.object({
-  lng: z.number().int(),
-  lat: z.number().int(),
+  lng: z.number(),
+  lat: z.number(),
   color: z.string(),
 });
 
