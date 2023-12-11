@@ -63,7 +63,9 @@ cd frontend && npm run deploy
 
 ## API
 
-The app's backend is deployed on Railway.app. The exact URL is `https://saltmap-production.up.railway.app/api`
+The app's backend is deployed on Railway.app.
+
+The exact URL is `https://saltmap-production.up.railway.app/api`
 
 The backend has several open endpoints to access data:
 
